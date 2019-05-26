@@ -1,8 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const contactService = require('../services/contactservice');
 
 router.get('/', function (req, res) {
-    res.send();
+    const contacts = contactService.getAllContacts();
+    res.send(contacts);
 });
 
 router.get('/:contactId', function (req, res) {

@@ -14,7 +14,7 @@
   },
   "servers": [
     {
-      "url": "https://hk-contact-manager.herokuapp.com/api-docs/v1"
+      "url": "https://hk-contact-manager.herokuapp.com/api/v1"
     }
   ],
   "tags": [
@@ -29,12 +29,42 @@
   ],
   "paths": {
     "/contacts": {
+      "get": {
+        "tags": [
+          "contacts"
+        ],
+        "summary": "Get all contacts",
+        "operationId": "GetContacts",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ContactList"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied",
+            "content": {}
+          },
+          "404": {
+            "description": "Contact not found",
+            "content": {}
+          }
+        }
+      },
       "put": {
         "tags": [
           "contacts"
         ],
         "summary": "Update an existing contact",
-        "operationId": "updateContact",
+        "operationId": "UpdateContact",
         "requestBody": {
           "description": "Contact object that needs to be added to the store",
           "content": {
@@ -66,7 +96,7 @@
           "contacts"
         ],
         "summary": "Add a new contact",
-        "operationId": "addContact",
+        "operationId": "AddContact",
         "requestBody": {
           "description": "Contact object",
           "content": {
@@ -93,7 +123,7 @@
         ],
         "summary": "Find contact by ID",
         "description": "Returns a single contact",
-        "operationId": "getContactById",
+        "operationId": "GetContactById",
         "parameters": [
           {
             "name": "contactId",
@@ -132,7 +162,7 @@
           "contacts"
         ],
         "summary": "Deletes a Contact",
-        "operationId": "deleteContact",
+        "operationId": "DeleteContact",
         "parameters": [
           {
             "name": "contactId",
@@ -164,7 +194,7 @@
         ],
         "summary": "Find contact by key",
         "description": "Returns search result",
-        "operationId": "searchContact",
+        "operationId": "SearchContact",
         "parameters": [
           {
             "name": "query",
@@ -182,7 +212,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ContactSearchResult"
+                  "$ref": "#/components/schemas/ContactList"
                 }
               }
             }
@@ -195,12 +225,42 @@
       }
     },
     "/contact_groups": {
+      "get": {
+        "tags": [
+          "contact groups"
+        ],
+        "summary": "Get all contact groups",
+        "operationId": "GetContactGroups",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ContactGroupList"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied",
+            "content": {}
+          },
+          "404": {
+            "description": "Contact not found",
+            "content": {}
+          }
+        }
+      },
       "put": {
         "tags": [
           "contact groups"
         ],
         "summary": "Update an existing contact group",
-        "operationId": "updateContactGroup",
+        "operationId": "UpdateContactGroup",
         "requestBody": {
           "description": "Contact group object that needs to be added to the store",
           "content": {
@@ -232,7 +292,7 @@
           "contact groups"
         ],
         "summary": "Add a new contact group",
-        "operationId": "addContactGroup",
+        "operationId": "AddContactGroup",
         "requestBody": {
           "description": "Contact Group object",
           "content": {
@@ -259,7 +319,7 @@
         ],
         "summary": "Find contact by ID",
         "description": "Returns a single contact",
-        "operationId": "getContactGroupById",
+        "operationId": "GetContactGroupById",
         "parameters": [
           {
             "name": "contactGroupId",
@@ -298,7 +358,7 @@
           "contact groups"
         ],
         "summary": "Deletes a Contact group",
-        "operationId": "deleteContactGroup",
+        "operationId": "DeleteContactGroup",
         "parameters": [
           {
             "name": "contactGroupId",
@@ -326,10 +386,16 @@
   },
   "components": {
     "schemas": {
-      "ContactSearchResult": {
+      "ContactList": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/Contact"
+        }
+      },
+      "ContactGroupList": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ContactGroup"
         }
       },
       "ContactGroup": {
