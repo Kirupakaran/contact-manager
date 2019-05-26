@@ -8,12 +8,12 @@ const contacts = require('./controllers/contacts');
 const OpenApiValidator = require('express-openapi-validator').OpenApiValidator;
 
 const app = express();
+app.use(express.json());
 
 new OpenApiValidator({
   apiSpecPath: path.join(__dirname, '../api-doc.json'),
 }).install(app);
 
-app.use(express.json());
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
 
