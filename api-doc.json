@@ -14,7 +14,7 @@
   },
   "servers": [
     {
-      "url": "//localhost:3000/v1"
+      "url": "https://hk-contact-manager.herokuapp.com/api-docs/v1"
     }
   ],
   "tags": [
@@ -125,12 +125,7 @@
             "description": "Contact not found",
             "content": {}
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
@@ -196,12 +191,7 @@
             "description": "Invalid query supplied",
             "content": {}
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/contact_groups": {
@@ -301,12 +291,7 @@
             "description": "Contact not found",
             "content": {}
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
@@ -427,13 +412,6 @@
             "format": "date_time"
           }
         }
-      }
-    },
-    "securitySchemes": {
-      "api_key": {
-        "type": "apiKey",
-        "name": "api_key",
-        "in": "header"
       }
     }
   }
