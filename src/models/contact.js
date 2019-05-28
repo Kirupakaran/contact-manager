@@ -9,7 +9,7 @@ const contactSchema = new Schema({
         _id: false
     }],
     email: [{
-        mailId: String,
+        emailId: String,
         tag: String,
         _id: false
     }],

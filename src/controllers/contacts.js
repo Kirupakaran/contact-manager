@@ -7,8 +7,9 @@ router.get('/', async function (req, res) {
     res.send(contacts);
 });
 
-router.get('/:contactId', function (req, res) {
-    res.send();
+router.get('/search', async function (req, res) {
+    const contacts = await contactService.searchContacts(req.query.query);
+    res.send(contacts);
 });
 
 router.post('/', async function (req, res) {
@@ -16,16 +17,24 @@ router.post('/', async function (req, res) {
     res.send(savedContact);
 });
 
-router.put('/:contactId', function (req, res) {
-    res.send();
+router.get('/:contactId', async function (req, res) {
+    const contact = await contactService.getContact(req.params.contactId);
+    res.send(contact);
 });
 
-router.delete('/:contactId', function (req, res) {
-    res.send();
+router.put('/:contactId', async function (req, res) {
+    const contact = await contactService.updateContact(req.params.contactId, req.body);
+    res.send(contact);
 });
 
-router.get('/search', function (req, res) {
-
+router.delete('/:contactId', async function (req, res) {
+    const deletedInfo = await contactService.deleteContact(req.params.contactId);
+    if (deletedInfo.deletedCount == 1) {
+        res.status(200).send();
+    }
+    else {
+        res.status(404).send();
+    }
 });
 
 module.exports = router;
