@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const swaggerUi = require('swagger-ui-express');
 const openApiDocumentation = require('../api-doc');
 const contacts = require('./controllers/contacts');
+const contactGroups = require('./controllers/contactgroups');
 const OpenApiValidator = require('express-openapi-validator').OpenApiValidator;
 
 const app = express();
@@ -18,6 +19,8 @@ new OpenApiValidator({
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
 
 app.use('/api/v1/contacts', contacts);
+
+app.use('/api/v1/contact_groups', contactGroups);
 
 app.use(function (err, req, res, next) {
   console.error(err.stack)

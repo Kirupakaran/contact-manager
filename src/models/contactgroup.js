@@ -12,4 +12,4 @@ contactGroupSchema.set('toJSON', {
     transform: function (doc, ret) {   delete ret._id  }
 });
 
-export default mongoose.model('ContactGroup', contactGroupSchema);
+module.exports = mongoose.model('ContactGroup', contactGroupSchema);

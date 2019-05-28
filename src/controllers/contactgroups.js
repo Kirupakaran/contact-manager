@@ -1,24 +1,36 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const contactGroupService = require('../services/contactgroupservice');
 
-router.get('/', function (req, res) {
-    res.send();
+const router = express.Router();
+
+router.get('/', async function (req, res) {
+    const contactGroups = await contactGroupService.getAllContactsGroups();
+    res.send(contactGroups);
 });
 
-router.get('/:contactGroupId', function (req, res) {
-    res.send();
+router.post('/', async function (req, res) {
+    const contactGroup = await contactGroupService.addContactGroup(req.body);
+    res.send(contactGroup);
 });
 
-router.post('/', function (req, res) {
-    res.send();
+router.get('/:contactGroupId', async function (req, res) {
+    const contactGroup = await contactGroupService.getContactGroup(req.params.contactGroupId);
+    res.send(contactGroup);
 });
 
-router.put('/:contactGroupId', function (req, res) {
-    res.send();
+router.put('/:contactGroupId', async function (req, res) {
+    const contactGroup = await contactGroupService.updateContactGroup(req.params.contactGroupId, req.body);
+    res.send(contactGroup);
 });
 
-router.delete('/:contactGroupId', function (req, res) {
-    res.send();
+router.delete('/:contactGroupId', async function (req, res) {
+    const deletedInfo = await contactGroupService.deleteContactGroup(req.params.contactGroupId);
+    if (deletedInfo.deletedCount == 1) {
+        res.status(200).send();
+    }
+    else {
+        res.status(404).send();
+    }
 });
 
 module.exports = router;
