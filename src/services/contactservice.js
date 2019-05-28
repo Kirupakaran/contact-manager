@@ -11,7 +11,7 @@ function addContact(contactData) {
         phone: contactData.phone,
         email: contactData.email    
     });
-    contact.save();
+    return contact.save();
 }
 
 module.exports = {

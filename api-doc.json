@@ -131,8 +131,7 @@
             "description": "ID of contact to return",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           }
         ],
@@ -170,8 +169,7 @@
             "description": "Contact id to delete",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           }
         ],
@@ -327,8 +325,7 @@
             "description": "ID of contact group to return",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           }
         ],
@@ -366,8 +363,7 @@
             "description": "Contact group id to delete",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           }
         ],
@@ -402,8 +398,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "integer",
-            "format": "int64"
+            "type": "string",
+            "readOnly": true
           },
           "name": {
             "type": "string"
@@ -435,8 +431,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "integer",
-            "format": "int64"
+            "type": "string",
+            "readOnly": true
           },
           "name": {
             "type": "string"
@@ -447,7 +443,8 @@
               "type": "object",
               "properties": {
                 "number": {
-                  "type": "string"
+                  "type": "string",
+                  "pattern": "^(([0]|\\+91)?[5-9]\\d{9})|((\\+?\\d{3})?[2-8]\\d{7})$"
                 },
                 "tag": {
                   "type": "string"
@@ -461,7 +458,8 @@
               "type": "object",
               "properties": {
                 "emailId": {
-                  "type": "string"
+                  "type": "string",
+                  "pattern": "\\S+@\\S+\\.\\S+"
                 },
                 "tag": {
                   "type": "string"
@@ -471,11 +469,13 @@
           },
           "created_time": {
             "type": "string",
-            "format": "date_time"
+            "format": "date_time",
+            "readOnly": true
           },
           "last_modified_time": {
             "type": "string",
-            "format": "date_time"
+            "format": "date_time",
+            "readOnly": true
           }
         }
       }

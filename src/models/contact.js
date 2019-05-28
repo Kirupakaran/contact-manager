@@ -5,11 +5,13 @@ const contactSchema = new Schema({
     name: String,
     phone: [{
         number: String,
-        tag: String
+        tag: String,
+        _id: false
     }],
     email: [{
         mailId: String,
-        tag: String
+        tag: String,
+        _id: false
     }],
     createdTime: {
         type: Date,
@@ -19,6 +21,12 @@ const contactSchema = new Schema({
         type: Date,
         default: Date.now
     }
+});
+
+contactSchema.set('toJSON', {
+    virtuals: true,
+    versionKey:false,
+    transform: function (doc, ret) {   delete ret._id  }
 });
 
 module.exports = mongoose.model('Contact', contactSchema);
