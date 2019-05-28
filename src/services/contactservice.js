@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const Contact = require('../models/contact');
 
 function getAllContacts() {
@@ -44,7 +43,7 @@ function searchContacts(query) {
         }, {
             'email.emailId': searchKey
         }]
-    });
+    }).sort( { createdTime: -1 });
 }
 
 module.exports = {
