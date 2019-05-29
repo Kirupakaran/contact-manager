@@ -266,7 +266,25 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ContactGroup"
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "contacts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "pattern": "^[0-9a-fA-F]{24}$"
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": ["name"]
               }
             }
           },
@@ -344,7 +362,25 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ContactGroup"
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "contacts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "pattern": "^[0-9a-fA-F]{24}$"
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": ["name"]
               }
             }
           },

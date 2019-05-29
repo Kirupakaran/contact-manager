@@ -5,7 +5,7 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "nyc --reporter=text mocha --timeout 5000 --recursive" 
+    "test": "nyc --reporter=text mocha --timeout 10000 --recursive" 
   },
   "author": "Kirupakaran Harikrishnan",
   "license": "ISC",

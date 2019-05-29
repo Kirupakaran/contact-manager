@@ -24,15 +24,12 @@ function addContactGroup(contactGroupData) {
 
 function updateContactGroup(contactGroupId, contactGroupData) {
     // replace id with _id for mongoose
-    contactGroupData._id = contactGroupData.id;
-    delete contactGroupData.id;
-
     contactGroupData.contacts.forEach(c => {
         c._id = c.id;
         delete c.id;
     });
 
-    return contactGroup.updateOne({ _id: contactGroupId}, ContactGroup);
+    return ContactGroup.updateOne({ _id: contactGroupId}, contactGroupData);
 }
 
 function deleteContactGroup(ContactGroupId) {

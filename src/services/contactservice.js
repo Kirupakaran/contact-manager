@@ -29,7 +29,6 @@ function searchContacts(query) {
     // case insensitive regex
     const searchKey = new RegExp(query, 'i');
 
-    console.log(query);
     // search name or phone number or email id
     return Contact.find({
         $or: [{

@@ -26,7 +26,8 @@ router.get('/:contactGroupId', async function (req, res) {
 router.put('/:contactGroupId', async function (req, res) {
     const updatedInfo = await contactGroupService.updateContactGroup(req.params.contactGroupId, req.body);
     if (updatedInfo.n == 1) {
-        res.send(req.body);
+        const updatedContactGroup = await contactGroupService.getContactGroup(req.params.contactGroupId);
+        res.send(updatedContactGroup);
     } else {
         res.status(404).send();
     }
