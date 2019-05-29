@@ -9,6 +9,7 @@ function getContactGroup(ContactGroupId) {
 }
 
 function addContactGroup(contactGroupData) {
+    // replace id with _id for mongoose
     const contactGroup = new ContactGroup({
         name: contactGroupData.name,
         contacts: contactGroupData.contacts.map(c => {
@@ -21,16 +22,17 @@ function addContactGroup(contactGroupData) {
     return contactGroup.save();
 }
 
-function updateContactGroup(ContactGroupId, contactGroupData) {
-    const contactGroup = new ContactGroup({
-        name: contactGroupData.name,
-        contacts: contactGroupData.contacts.map(c => {
-                c._id = c.id;
-                delete c.id;
-                return c;
-        })
+function updateContactGroup(contactGroupId, contactGroupData) {
+    // replace id with _id for mongoose
+    contactGroupData._id = contactGroupData.id;
+    delete contactGroupData.id;
+
+    contactGroupData.contacts.forEach(c => {
+        c._id = c.id;
+        delete c.id;
     });
-    return contactGroup.updateOne({ _id: ContactGroupId}, ContactGroup);
+
+    return contactGroup.updateOne({ _id: contactGroupId}, ContactGroup);
 }
 
 function deleteContactGroup(ContactGroupId) {

@@ -15,12 +15,21 @@ router.post('/', async function (req, res) {
 
 router.get('/:contactGroupId', async function (req, res) {
     const contactGroup = await contactGroupService.getContactGroup(req.params.contactGroupId);
-    res.send(contactGroup);
+
+    if (!contactGroup) {
+        res.status(404).send();
+    } else {
+        res.send(contactGroup);
+    }
 });
 
 router.put('/:contactGroupId', async function (req, res) {
-    const contactGroup = await contactGroupService.updateContactGroup(req.params.contactGroupId, req.body);
-    res.send(contactGroup);
+    const updatedInfo = await contactGroupService.updateContactGroup(req.params.contactGroupId, req.body);
+    if (updatedInfo.n == 1) {
+        res.send(req.body);
+    } else {
+        res.status(404).send();
+    }
 });
 
 router.delete('/:contactGroupId', async function (req, res) {

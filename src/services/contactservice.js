@@ -18,12 +18,7 @@ function addContact(contactData) {
 }
 
 function updateContact(contactId, contactData) {
-    const contact = new Contact({
-        name: contactData.name,
-        phone: contactData.phone,
-        email: contactData.email    
-    });
-    return contact.updateOne({ _id: contactId}, contact);
+    return Contact.updateOne({ _id: contactId}, contactData);
 }
 
 function deleteContact(contactId) {
@@ -34,6 +29,7 @@ function searchContacts(query) {
     // case insensitive regex
     const searchKey = new RegExp(query, 'i');
 
+    console.log(query);
     // search name or phone number or email id
     return Contact.find({
         $or: [{

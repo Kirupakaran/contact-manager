@@ -80,6 +80,43 @@
         }
       }
     },
+    "/contacts/search": {
+      "get": {
+        "tags": [
+          "contacts"
+        ],
+        "summary": "Find contact by key",
+        "description": "Returns search result",
+        "operationId": "SearchContact",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "search query which can be name/phone number/email",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactList"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid query supplied",
+            "content": {}
+          }
+        }
+      }
+    },
     "/contacts/{contactId}": {
       "get": {
         "tags": [
@@ -110,6 +147,10 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Invalid id",
+            "content": {}
           },
           "404": {
             "description": "Contact not found",
@@ -176,45 +217,12 @@
           }
         ],
         "responses": {
+          "400": {
+            "description": "Invalid id",
+            "content": {}
+          },
           "404": {
             "description": "Contact not found",
-            "content": {}
-          }
-        }
-      }
-    },
-    "/contacts/search": {
-      "get": {
-        "tags": [
-          "contacts"
-        ],
-        "summary": "Find contact by key",
-        "description": "Returns search result",
-        "operationId": "SearchContact",
-        "parameters": [
-          {
-            "name": "query",
-            "in": "query",
-            "description": "search query which can be name/phone number/email",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ContactList"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid query supplied",
             "content": {}
           }
         }
@@ -303,6 +311,10 @@
               }
             }
           },
+          "400": {
+            "description": "Invalid id",
+            "content": {}
+          },
           "404": {
             "description": "Contact group not found",
             "content": {}
@@ -368,6 +380,10 @@
           }
         ],
         "responses": {
+          "400": {
+            "description": "Invalid id",
+            "content": {}
+          },
           "404": {
             "description": "Contact group not found",
             "content": {}
@@ -406,7 +422,10 @@
               "$ref": "#/components/schemas/Contact"
             }
           }
-        }
+        },
+        "required": [
+          "name"
+        ]
       },
       "ApiResponse": {
         "type": "object",
@@ -473,7 +492,10 @@
             "format": "date_time",
             "readOnly": true
           }
-        }
+        },
+        "required": [
+          "name"
+        ]
       }
     }
   }
