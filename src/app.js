@@ -1,7 +1,5 @@
-require('dotenv').config();
 const path = require('path');
 const express = require('express');
-const mongoose = require('mongoose');
 const swaggerUi = require('swagger-ui-express');
 const openApiDocumentation = require('../api-doc');
 const contacts = require('./controllers/contacts');
@@ -29,16 +27,4 @@ app.use(function (err, req, res, next) {
   });
 });
 
-mongoose.connect(process.env.DB_CONNECTION_URI, { useNewUrlParser: true }, function (err) {
-  if (err) throw err;
-
-  console.log('Connected to db server');
-  app.listen(process.env.PORT, () => console.log(`App listening on port ${process.env.PORT}!`));
-});
-
-process.on('SIGINT', function() {
-  mongoose.disconnect(function () {
-    console.log('Mongo disconnected on app termination');
-    process.exit(0);
-  });
-});
+module.exports = app;

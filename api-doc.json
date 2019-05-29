@@ -49,10 +49,6 @@
               }
             }
           },
-          "400": {
-            "description": "Invalid ID supplied",
-            "content": {}
-          },
           "404": {
             "description": "Contact not found",
             "content": {}
@@ -78,15 +74,11 @@
         },
         "responses": {
           "400": {
-            "description": "Invalid ID supplied",
+            "description": "Invalid input",
             "content": {}
           },
           "404": {
             "description": "Contact not found",
-            "content": {}
-          },
-          "405": {
-            "description": "Validation exception",
             "content": {}
           }
         }
@@ -109,7 +101,7 @@
           "required": true
         },
         "responses": {
-          "405": {
+          "400": {
             "description": "Invalid input",
             "content": {}
           }
@@ -146,10 +138,6 @@
               }
             }
           },
-          "400": {
-            "description": "Invalid ID supplied",
-            "content": {}
-          },
           "404": {
             "description": "Contact not found",
             "content": {}
@@ -174,10 +162,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Invalid ID supplied",
-            "content": {}
-          },
           "404": {
             "description": "Contact not found",
             "content": {}
@@ -243,12 +227,8 @@
               }
             }
           },
-          "400": {
-            "description": "Invalid ID supplied",
-            "content": {}
-          },
           "404": {
-            "description": "Contact not found",
+            "description": "Contact group not found",
             "content": {}
           }
         }
@@ -272,15 +252,11 @@
         },
         "responses": {
           "400": {
-            "description": "Invalid ID supplied",
+            "description": "Invalid input",
             "content": {}
           },
           "404": {
             "description": "Contact group not found",
-            "content": {}
-          },
-          "405": {
-            "description": "Validation exception",
             "content": {}
           }
         }
@@ -303,7 +279,7 @@
           "required": true
         },
         "responses": {
-          "405": {
+          "400": {
             "description": "Invalid input",
             "content": {}
           }
@@ -340,12 +316,8 @@
               }
             }
           },
-          "400": {
-            "description": "Invalid ID supplied",
-            "content": {}
-          },
           "404": {
-            "description": "Contact not found",
+            "description": "Contact group not found",
             "content": {}
           }
         }
@@ -368,10 +340,6 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Invalid ID supplied",
-            "content": {}
-          },
           "404": {
             "description": "Contact group not found",
             "content": {}
@@ -444,7 +412,7 @@
               "properties": {
                 "number": {
                   "type": "string",
-                  "pattern": "^(([0]|\\+91)?[5-9]\\d{9})|((\\+?\\d{3})?[2-8]\\d{7})$"
+                  "pattern": "^(\\b([0]|\\+91)?[5-9]\\d{9}\\b)|(\\b(\\+?[0-8]{3})?[2-8]\\d{7}\\b)$"
                 },
                 "tag": {
                   "type": "string"
