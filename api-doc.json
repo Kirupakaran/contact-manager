@@ -463,21 +463,6 @@
           "name"
         ]
       },
-      "ApiResponse": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "type": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
-          }
-        }
-      },
       "Contact": {
         "type": "object",
         "properties": {
@@ -532,6 +517,26 @@
         "required": [
           "name"
         ]
+      },
+      "errors": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+            },
+            "errorCode": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            },
+            "location": {
+              "type": "string"
+            }
+          }
+        } 
       }
     }
   }
