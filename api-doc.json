@@ -55,34 +55,6 @@
           }
         }
       },
-      "put": {
-        "tags": [
-          "contacts"
-        ],
-        "summary": "Update an existing contact",
-        "operationId": "UpdateContact",
-        "requestBody": {
-          "description": "Contact object that needs to be added to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Contact"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "400": {
-            "description": "Invalid input",
-            "content": {}
-          },
-          "404": {
-            "description": "Contact not found",
-            "content": {}
-          }
-        }
-      },
       "post": {
         "tags": [
           "contacts"
@@ -123,7 +95,8 @@
             "description": "ID of contact to return",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "pattern": "^[0-9a-fA-F]{24}$"
             }
           }
         ],
@@ -144,6 +117,46 @@
           }
         }
       },
+      "put": {
+        "tags": [
+          "contacts"
+        ],
+        "summary": "Update an existing contact",
+        "operationId": "UpdateContact",
+        "parameters": [
+          {
+            "name": "contactId",
+            "in": "path",
+            "description": "Contact id to update",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9a-fA-F]{24}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Contact object that needs to be added to the store",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contact"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid input",
+            "content": {}
+          },
+          "404": {
+            "description": "Contact not found",
+            "content": {}
+          }
+        }
+      },
       "delete": {
         "tags": [
           "contacts"
@@ -157,7 +170,8 @@
             "description": "Contact id to delete",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "pattern": "^[0-9a-fA-F]{24}$"
             }
           }
         ],
@@ -233,34 +247,6 @@
           }
         }
       },
-      "put": {
-        "tags": [
-          "contact groups"
-        ],
-        "summary": "Update an existing contact group",
-        "operationId": "UpdateContactGroup",
-        "requestBody": {
-          "description": "Contact group object that needs to be added to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ContactGroup"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "400": {
-            "description": "Invalid input",
-            "content": {}
-          },
-          "404": {
-            "description": "Contact group not found",
-            "content": {}
-          }
-        }
-      },
       "post": {
         "tags": [
           "contact groups"
@@ -301,7 +287,8 @@
             "description": "ID of contact group to return",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "pattern": "^[0-9a-fA-F]{24}$"
             }
           }
         ],
@@ -322,6 +309,46 @@
           }
         }
       },
+      "put": {
+        "tags": [
+          "contact groups"
+        ],
+        "summary": "Update an existing contact group",
+        "operationId": "UpdateContactGroup",
+        "parameters": [
+          {
+            "name": "contactGroupId",
+            "in": "path",
+            "description": "ID of contact group to return",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9a-fA-F]{24}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Contact group object that needs to be added to the store",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactGroup"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid input",
+            "content": {}
+          },
+          "404": {
+            "description": "Contact group not found",
+            "content": {}
+          }
+        }
+      },
       "delete": {
         "tags": [
           "contact groups"
@@ -335,7 +362,8 @@
             "description": "Contact group id to delete",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "pattern": "^[0-9a-fA-F]{24}$"
             }
           }
         ],
