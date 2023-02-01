@@ -15,7 +15,7 @@
     "express": "^4.17.0",
     "express-openapi-validator": "^0.53.3",
     "mocha": "^6.1.4",
-    "mongoose": "^5.5.11",
+    "mongoose": "^5.13.15",
     "supertest": "^4.0.2",
     "swagger-ui-express": "^4.0.4"
   },
